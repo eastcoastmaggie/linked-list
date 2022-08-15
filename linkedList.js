@@ -93,6 +93,48 @@ const linkedListProto = {
         }
         return -1;
     },
+    insertAt(value, index){
+        newNode = node();
+        newNode.value = value;
+        if (this.head == null){
+            this.head = newNode;
+            this.tail = newNode;
+        } else if (index >= this.size){ 
+            this.tail.nextNode = newNode;
+            this.tail = newNode;
+        } else {
+            let i = 0;
+            let currentNode = this.head;
+            while (i < index){
+                if (index-1 == i){
+                    let tempNode = currentNode.nextNode;
+                    currentNode.nextNode = newNode;
+                    newNode.nextNode = tempNode;
+                }
+                i++;
+                currentNode = currentNode.nextNode;
+            }
+        }
+        this.size++;
+        return this;
+    },
+    removeAt(index){
+        if (this.head == null || index >= this.size){
+            return null;
+        } else {
+            let i = 0;
+            let currentNode = this.head;
+            while (i < index){
+                if (index-1 == i){
+                    currentNode.nextNode = currentNode.nextNode.nextNode;
+                }
+                i++;
+                currentNode = currentNode.nextNode;
+            }
+        }
+        this.size--;
+        return this;
+    },
     toString() {
         // returns string representing list  ( value ) -> ( value ) -> ( value ) -> null
         if(this.head == null) {

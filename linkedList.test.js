@@ -98,3 +98,21 @@ test('find() of linked list with multiple nodes, not in',() => {
     list.append('five');
     expect(list.find('pizza')).toBe(-1);
 });
+test('insearAt(value, index) of linked list with multiple nodes',() => {
+    let  list = linkedList();
+    list.prepend('testing');
+    list.append(4);
+    list.prepend('one');
+    list.prepend('zero');
+    console.log(list.toString())
+    expect(list.insertAt('pizza', 3).toString()).toBe('( zero ) -> ( one ) -> ( testing ) -> ( pizza ) -> ( 4 )');
+});
+test('removeAt(index) of linked list with multiple nodes',() => {
+    let  list = linkedList();
+    list.prepend('testing');
+    list.append(4);
+    list.prepend('one');
+    list.prepend('zero');
+    console.log(list.toString())
+    expect(list.removeAt(3).toString()).toBe('( zero ) -> ( one ) -> ( testing )');
+});
